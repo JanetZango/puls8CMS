@@ -1,24 +1,141 @@
-<h1 *ngFor="let x of DjProfiles">
- bio: {{x.bio}}
- <br>
- <br>
- email: {{x.email}}
- <br>
- <br>
- city: {{x.city}}
- <br>
- <br>
- fullname: {{x.fullname}}
- <br>
- <br>
- gender: {{x.gender}}
- <br>
- <br>
- payment: {{x.payment}}
- <br>
- <br>
- price: {{x.price}}
- <br>
- <br>
- stagename : {{x.stagename}}
-</h1>
+<div class="container">
+  <div class="nav">
+    <div class="logo">
+      <img src="../../assets/heading Logo copy.png" alt="" class="logo">
+    </div>
+  
+  </div>
+  
+  <div class="content">
+    <div class="seperator">
+      <div  class="leftcontent">
+        <div  class="cardrow">
+          <div  class="card" (click)="getdj(); fullname = ''; stagename = ''; cardselection = 'dj'; avatarindex = i" [class.cardactive]="cardselection == 'dj'">
+            <div class="titlecontainer">
+              <h1 class="title" >Pulse DJs</h1>
+              <p class="number counter">{{this.countdj}}</p>
+            </div>
+          </div>
+          <div class="card" (click)="getusers(); fullname = ''; stagename = ''; cardselection = 'users'; avatarindex = i" [class.cardactive]="cardselection == 'users'">
+            <div class="titlecontainer">
+              <h1 class="title" >Users</h1>
+              <p class="number counter">{{this.countuser}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="djlist">
+          <div class="genlist" *ngIf="cardselection == 'dj'">
+            <a class="genre" [class.acti]="page == 'allDjs'" (click)="page = 'allDjs'; " >All</a>
+            <a class="genre" [class.acti]="page == 'commercial'"  (click)="page = 'commercial'">Commercial</a>
+            <a class="genre" [class.acti]="page == 'deephouse'" (click)="page = 'deephouse';">Deep House</a>
+            <!-- <a class="genre" [class.acti]="page == 'edm'" (click)="page = 'edm';">EDM</a> -->
+            <a class="genre" [class.acti]="page == 'kwaito'" (click)="page = 'kwaito';">Kwaito</a>
+            <a class="genre" [class.acti]="page == 'hiphop'" (click)="page = 'hiphop'">Hip Hop</a>
+            <!-- <select class="genderselect" name="gender">
+              <option class="option" value="" selected disabled>Gender</option>
+              <option class="option" value="male">Male</option>
+              <option class="option" value="female">Female</option>
+            </select> -->
+            <!-- <div class="gendercontainer">
+                <button class="gender">Gender</button>
+                <div class="gendericons">
+                  <div class="personcont">
+                      <button class="person"><i class="fas fa-male"></i></button> <label class="genderlabel">Male</label>
+                  </div>
+                  <div class="personcont">
+                      <button class="person"><i class="fas fa-female"></i></button> <label class="genderlabel">Female</label>
+                  </div>
+                </div>
+            </div> -->
+
+          </div>
+  
+          <div class="avatarcnt" *ngIf="page == 'allDjs'">
+              <div (click)="DisplayInfor(x); avatarindex = i;" [class.acti]="avatarindex == i" *ngFor="let x of DjProfiles; let i = index" class="avatar">
+                  <img   src="{{x.img}}" alt="" class="avatar__image">
+                  <div class="avatar__textcontainer">
+                    <p class="avatar__textcontainer--name">{{x.fullname | slice:0:10}}</p>
+                    <p class="avatar__textcontainer--category">{{x.genre | slice:0:10}}</p>
+                  </div>
+              </div>
+            </div>
+          <div class="avatarcnt" *ngIf="page == 'commercial'">
+            <div (click)="DisplayInfor(x)"  *ngFor="let x of houseDjs" class="avatar">
+                <img   src="{{x.img}}" alt="" class="avatar__image">
+                <div class="avatar__textcontainer">
+                  <p class="avatar__textcontainer--name">{{x.fullname}}</p>
+                  <p class="avatar__textcontainer--category">{{x.genre}}</p>
+                </div>
+            </div>
+          </div> 
+          <div class="avatarcnt" *ngIf="page == 'deephouse'">
+            <div (click)="DisplayInfor(x)"  *ngFor="let x of DeepHouseDjs" class="avatar">
+                <img   src="{{x.img}}" alt="" class="avatar__image">
+                <div class="avatar__textcontainer">
+                  <p class="avatar__textcontainer--name">{{x.fullname}}</p>
+                  <p class="avatar__textcontainer--category">{{x.genre}}</p>
+                </div>
+            </div>
+          </div> 
+          
+          <div class="avatarcnt" *ngIf="page == 'hiphop'">
+              <div (click)="DisplayInfor(x)" *ngFor="let x of hipHopDjs" class="avatar">
+                  <img   src="{{x.img}}" alt="" class="avatar__image">
+                  <div class="avatar__textcontainer">
+                    <p class="avatar__textcontainer--name">{{x.fullname}}</p>
+                    <p class="avatar__textcontainer--category">{{x.genre}}</p>
+                  </div>
+              </div>
+            </div>
+            <div class="avatarcnt" *ngIf="page == 'kwaito'">
+              <div (click)="DisplayInfor(x)" *ngFor="let x of kwaitoDjs" class="avatar">
+                  <img   src="{{x.img}}" alt="" class="avatar__image">
+                  <div class="avatar__textcontainer">
+                    <p class="avatar__textcontainer--name">{{x.fullname}}</p>
+                    <p class="avatar__textcontainer--category">{{x.genre}}</p>
+                  </div>
+              </div>
+            </div>
+          
+        </div>
+  
+      </div>
+      <div class="rightcontent">
+        <img *ngIf="fullname == '' && stagename == ''" class="displaypic" src="https://static1.squarespace.com/static/5adeaa0ff8370a5de0e90824/t/5b976ea440ec9af58bd0860b/1536650919208/blank-avatar.png?format=300w" alt="">
+        <img [src]="img" alt="" class="displaypic" *ngIf="fullname != '' && stagename != ''">
+        <p class="stagename" *ngIf="stagename == ''">No Profile Selected</p>
+        <p class="fullname" *ngIf="stagename == ''">Select a profile</p>
+        <p class="stagename" *ngIf="stagename != ''">{{stagename | slice:0:10}}</p>
+        <p class="fullname" *ngIf="fullname != ''">{{fullname | slice:0:20}}</p>
+        <p class="city" *ngIf="city != ''">{{city}}</p>
+
+        <p class="bio" *ngIf="fullname != '' && stagename != ''">
+         {{bio | slice:0:100}}...
+        </p>
+
+        <!-- <p class="head">Views</p>
+        <p class="number">23</p>
+        <p class="head">Interactions</p>
+        <p class="number">23</p>
+        <p class="head">Comments</p>
+        <p class="number">23</p> -->
+
+        <button  (click)="ViewProfile()" *ngIf="stagename != ''" class="more">View Profile</button>
+
+      </div>
+    </div>
+  
+  </div>
+  
+  <div class="loadcontainer" *ngIf="countdj < 1 && countuser < 1">
+    <div class="loadingmod">
+      <img src="../../assets/sound-wavesdard.png" alt="" class="icon">
+      <!-- <p class="counter">2000</p> -->
+      <p class="message">Loading Content 
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </p>
+    </div>
+  </div>
+</div>

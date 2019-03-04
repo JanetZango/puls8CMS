@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/puls8cmss",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

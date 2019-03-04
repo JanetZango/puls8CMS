@@ -1,0 +1,68 @@
+<div class="content">
+
+  <div class="border">
+
+    <form #f="ngForm" (ngSubmit)="login(f)" class="formbox">
+      <img class="image" src="../../assets/sound-wavesdard.png" alt="">
+      <h1 class="heading">Login</h1>
+      <input name="email" ngModel #email="ngModel" required type="email"  class="input" placeholder="Email">
+      <p *ngIf="!email.valid && email.touched" class="err">Email Cannot Be Empty!</p>
+      <input name="password" ngModel #password="ngModel" required type="password" class="input" placeholder="Password">
+      <p *ngIf="!password.valid && password.touched" class="err">Password Cannot Be Empty!</p>
+      <input type="submit" value="login" class="button">
+
+      <a class="link">
+        <span class="link hov" (click)="nextpage('register')">Create An Account</span> or <span class="hov" (click)="resetpassword()">Forgot Password</span>
+      </a>
+      
+      <!-- <a class="link" >Forgot Password?</a> -->
+
+    </form>
+  </div>
+
+
+ <div class="warncontainer" *ngIf="logwarn == 'true'">
+    <div class="alertbox" (click)="logwarn = 'false'">
+      <img src="../../assets/thinking.svg" alt="" class="alertimg">
+      <div class="messagebox">
+        <p class="alertmessagehead">Whoa, Hey There...</p>
+        <p class="alertmessage">Your Data Has To Be Valid Before We Let You In</p>
+        <button class="alertbutton" (click)="logwarn = 'false'">Okay</button>
+      </div>
+    </div>
+  </div> 
+
+
+  <div class="succcontainer" *ngIf="logsucc == 'true'">
+    <div class="alertbox">
+      <img src="../../assets/happy.svg" alt="" class="alertimg">
+      <div class="messagebox">
+        <p class="alertmessagehead">Yesss!</p>
+        <p class="alertmessage">You Have Successfully Logged In</p>
+        <button class="alertbutton" (click)="cancelModal()">Okay</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="loadcontainer" *ngIf="loader == 'true'">
+    <div class="loadingmod">
+      <img src="../../assets/sound-wavesdard.png" alt="" class="icon">
+      <p class="message">Loggin In
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="failcontainer" *ngIf="logfail == 'true'">
+    <div class="alertbox" (click)="logfail = 'false'">
+      <img src="../../assets/sad.svg" alt="" class="alertimg">
+      <div class="messagebox">
+        <p class="alertmessagehead">Oh Boy!</p>
+        <p class="alertmessage">We Can't Let You In... Yet. {{message}}</p>
+        <button class="alertbutton" (click)="logfail = 'false';">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>

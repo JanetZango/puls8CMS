@@ -1,0 +1,396 @@
+$color-primary-light: #EFD268;
+$color-primary-dark: #AB8E21;
+$color-danger: #f53d3d;
+$color-secondary-light: #794DA1;
+$color-secondary-dark: #4A1D73;
+
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #333;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: #999;
+
+.body{
+    // color: white;
+}
+.info{
+    font-size: 1.5rem;
+}
+
+
+.bodd{
+    // background: url('../../assets/cro.jpg');
+    width: 100%;
+    height: 100vh;
+    background: cover;
+    background-position: bottom;
+    position: fixed;
+    background-repeat: none;
+    top: 0;
+}
+
+.nav{
+    color: white;
+    display: flex;
+    height: 6vh;
+    .logo{
+        display: flex;
+        padding: .5rem;
+        align-items: center;
+        img{
+            height: 6rem;
+        }
+        .name{
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: .3rem;
+            font-weight: 200;
+            margin: 0;
+            .prefix{
+                position: relative;
+                height: 100%;
+            }
+
+            .eight{
+                font-size: 6rem;
+                font-weight: 500;
+                background: linear-gradient(rgba($color-primary-light, .8), rgba($color-primary-dark, .5));
+                -webkit-background-clip: text;
+                color: transparent; 
+            }
+        }
+    }
+}
+
+// .content{
+//     background: white;
+//     display: flex;
+
+//     .seperator{
+//         background: pink;
+//         .leftcontent{
+            
+//         }
+//     }
+// }
+
+.cardactive{
+    border: 3px solid $color-primary-dark;
+    box-shadow: 0 0px 100px  rgba($color-primary-light, .5) inset;
+
+    .titlecontainer{
+        h1{
+            color: white;
+        }
+
+        p{
+            color: $color-primary-light;
+        }
+    }
+}
+
+.content{
+    height: 94vh;
+    width: 100%;
+    // background: white;
+    .seperator{
+        display: flex;
+        flex-direction: row;
+    }
+    .leftcontent{
+        flex-direction: column;
+        flex: 1;
+        height: 94vh;
+        display: flex;
+        .cardrow{
+            display: flex;
+            flex: 0 0 20vh;
+            width: 100%;
+            background: lightblue;
+            margin-bottom: .5rem;
+            .card{
+                display: flex;
+                height: 20vh;
+                color: white;
+                transition: .3s;
+                align-items: center;
+                justify-content: center;
+
+                .titlecontainer{
+                    
+                    .title{font-weight: 200; font-size: 3rem;text-align: center;}
+                    .number{font-size: 6rem;text-align: center;}
+                }
+                &:nth-child(1){
+                    flex: 0 0 50%;
+                    background: linear-gradient(rgba(black, .5), rgba(black, .5)) , url('../../assets/decks.jpg');
+                    background-size: cover;
+                    background-position: center;
+                }
+                &:nth-child(2){
+                    flex: 0 0 50%;
+                    background: linear-gradient(rgba(black, .5), rgba(black, .5)) , url('../../assets/crowd.jpg');
+                    background-size: cover;
+                    background-position: bottom;
+                }
+            }
+        }
+        .djlist{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            flex: 1;
+            
+            .category{
+                height: 2rem;
+                width: 100%;
+                background: pink;
+                display: block;
+            }
+
+            .genlist{
+                width: 100%;
+                color: white;
+                display: flex;
+                justify-content: space-evenly;
+                flex: 0 0 5rem;
+                align-items: center;
+                .genre{
+                    display: block;
+                    padding: 1rem 2rem;
+                    font-size: 2rem;
+                    margin: .5rem 0;
+                    transition: all ease .3s;
+                    border-radius: 10rem !important;
+
+                    &:hover{
+                        color: $color-primary-dark;
+                        // background: $color-primary-dark;
+                    }
+
+                    .active{
+                        background: $color-primary-dark;
+                        border-radius: 10rem;
+                        &:hover{
+                            color: white !important;
+                        }
+                    }
+                }
+            }
+
+            .avatarcnt{
+                // background: #4A1D73;
+                width: 100%;
+                display: flex;
+                flex-flow: row wrap;
+                overflow-y: scroll;
+                overflow-x: hide;
+                &::-webkit-scrollbar{
+                    width: 1rem;
+                }
+                &::-webkit-scrollbar-track{
+                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                }
+                &::-webkit-scrollbar-thumb{
+                    background: linear-gradient($color-primary-dark, $color-primary-light);
+                    border-radius: 10rem;
+                }
+                .avatar{
+                    flex: 0 0 20rem;
+                    margin-left: 5rem; 
+                    margin-top: 2rem;
+                    animation: showup .5s ease;
+                    margin: 2rem 2.5rem 0 2.5rem;
+                    padding: .5rem;
+                    transition: ease .3s all;
+                    &:hover{
+                        background: #AB8E21;
+                        border-radius: .5rem;
+                    }
+
+                    &__image{
+                        width: 10rem;
+                        height: 10rem;
+                        border-radius: 50%;
+                        border: 2px solid white;
+                        margin: 0 auto;
+                        display: block;
+                    }
+
+                    &__textcontainer{
+                        // display: flex;
+                        color: white;
+                        &--name{
+                            display: block;
+                            text-align: center;
+                            font-size: 3rem;
+                        }
+                        &--category{
+                            display: block;
+                            text-align: center;
+                            font-size: 2rem;
+                            background: rgba(white, .1);
+                            border-radius: 10rem;
+                            border: 2px solid $color-primary-light;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+
+    @for $i from 1 through 10 {
+        .avatar:nth-child(#{$i}n) {
+            animation-delay: #{$i * 0.5}s;
+        }
+    }
+
+    .acti{
+        background: $color-primary-dark;
+    }
+
+    .genderselect{
+        background: linear-gradient($color-primary-light, $color-primary-dark);
+        border: none;
+        border-radius: 10rem;
+        padding: .5rem 2rem;
+        color: white;
+        font-size: 2rem;
+
+        &:focus{
+            outline: none;
+        }
+
+        .option{
+            background: rgba(black, .9);
+            color: $color-primary-light;
+        }
+    }
+
+    .rightcontent{
+        background: linear-gradient(rgba($color-secondary-dark, .9), rgba(black,9));
+        flex-direction: column;
+        height: 94vh;
+        width: 25rem;
+        color: white;
+        text-align: center;
+
+        .more{
+            background: linear-gradient($color-primary-light, $color-primary-dark);
+            border-radius: 10rem;
+            padding: .5rem 2rem;
+            color: white;
+            font-size: 2.5rem;
+            border: none;
+            margin-top: 2rem;
+            animation: showup .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: ease .3s;
+            &:hover{
+                background: linear-gradient($color-primary-dark, $color-primary-light);
+            }
+        }
+
+        .displaypic{
+            height: 20rem;
+            width: 20rem;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+            border: 2px solid white;
+            margin-top: 2rem;
+            animation: fadein .3s ease;            
+        }
+
+        .stagename{
+            font-size: 4rem;
+            margin-top: 2rem;
+            animation: fadein .3s ease;
+            
+        }
+
+        .fullname{
+            font-size: 2rem;
+            margin-top: 1rem;
+            animation: fadein .3s ease;
+            
+        }
+
+        .city{
+            font-size: 1.6rem;
+            margin-top: 1rem;
+            animation: fadein .3s ease;
+            
+        }
+
+        .bio{
+            font-size: 1.6rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            animation: fadein .3s ease;
+            word-wrap: break-word;
+        }
+
+        .head{
+            font-size: 2.5rem;
+            margin-top: 1;
+            animation: fadein .3s ease;
+            
+        }
+
+        .number{
+            font-size: 2rem;
+            animation: fadein .3s ease;
+            
+        }
+    }
+}
+
+.gendercontainer{
+    position: relative;
+    
+    .gender{
+        background: $color-primary-light;
+        color: white;
+        border: none;
+        padding: .5rem 2rem;
+        transition: transform .3s;
+        
+        &:focus + div{
+            // background: white;
+            transform: scale(1) translateY(0);
+            // display: flex;
+            // justify-content: space-between;
+        }
+    
+        & + .gendericons{
+            position: absolute;
+            transition: .3s;
+            transform: scale(0) translateY(-5rem);
+            transform-origin: top;
+            top: 4rem;
+            right: 0;
+            display: flex;
+            justify-content: space-evenly;
+            .personcont{
+                
+                .person{
+                    background:linear-gradient($color-primary-light, $color-primary-dark);
+                    border: none;
+                    border-radius: 50%;
+                    padding: .5rem 2rem;
+                    height: 5rem;
+                    width: 5rem;
+                    margin: 0;
+                    font-size: 2rem;
+                    margin-right: 1rem;
+                }
+            }
+        }
+
+    }
+
+}
